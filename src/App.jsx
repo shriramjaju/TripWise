@@ -1,31 +1,31 @@
-import { useEffect, useState } from "react";
-import { fetchPlaces } from "./api";
+import { NavLink, Route, Routes } from "react-router-dom";
+import Explore from "./pages/Explore";
+import Details from "./pages/Details";
+import MyTrip from "./pages/MyTrip";
+import { useTrip } from "./TripContext";
+import "./App.css";
 
 export default function App() {
-  const [places, setPlaces] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    fetchPlaces()
-      .then(setPlaces)
-      .catch((e) => setError(e.message))
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (loading) return <p>Loading places...</p>;
-  if (error) return <p>Something went wrong: {error}</p>;
-  if (places.length === 0) return <p>No results found.</p>;
+  const { trip } = useTrip();
 
   return (
-    <div>
-      <h1>TripWise</h1>
-      {places.map((p) => (
-        <div key={p.place_id}>
-          <h3>{p.name}</h3>
-          <p>{p.formatted}</p>
+    <div className="app">
+      <nav className="nav">
+        <span className="logo">TripWise</span>
+        <div className="links">
+          <NavLink to="/" end>Explore</NavLink>
+          <NavLink to="/trip">
+            My Trip <span className="badge">{trip.length}</span>
+          </NavLink>
         </div>
-      ))}
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Explore />} />
+        <Route path="/destination/:id" element={<Details />} />
+        <Route path="/trip" element={<MyTrip />} />
+        <Route path="*" element={<p className="message">Page not found.</p>} />
+      </Routes>
     </div>
   );
 }

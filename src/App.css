@@ -121,3 +121,5 @@ body[data-theme="food"]        { background: linear-gradient(180deg, #fee2e2, #f
 body[data-theme="cafes"]       { background: linear-gradient(180deg, #efe3d3, #f5f7fa 70%); }
 body[data-theme="shopping"]    { background: linear-gradient(180deg, #fae8ff, #f5f7fa 70%); }
 body[data-theme="lakes"]       { background: linear-gradient(180deg, #dbeafe, #f5f7fa 70%); }
+
+button.back { background: none; border: 0; padding: 0; cursor: pointer; font-size: inherit; }

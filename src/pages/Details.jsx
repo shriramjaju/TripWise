@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { fetchPlaceById, fetchWeather, fetchPhotos } from "../api";
 import { useTrip } from "../TripContext";
 
 export default function Details() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { state } = useLocation();
   const { addPlace, removePlace, isInTrip } = useTrip();
 
@@ -52,7 +53,12 @@ export default function Details() {
 
   return (
     <div className="details">
-      <Link to="/" className="back">← Back to Explore</Link>
+      <button
+  className="back"
+  onClick={() => (window.history.length > 1 ? navigate(-1) : navigate("/"))}
+>
+  ← Back to Explore
+</button>
       <h1>{place.name}</h1>
       <p className="address">{place.formatted}</p>
       <div className="gallery">

@@ -1,7 +1,7 @@
 
 import PlaceImage from "../PlaceImage";
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { fetchPlaces } from "../api";
 import { useTrip } from "../TripContext";
 
@@ -21,9 +21,21 @@ const CATEGORIES = [
 
 export default function Explore() {
   const { addPlace, removePlace, isInTrip } = useTrip();
-  const [category, setCategory] = useState(CATEGORIES[0].value);
-  const [search, setSearch] = useState("");
-  const [sort, setSort] = useState("name-asc");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const category = searchParams.get("category") || CATEGORIES[0].value;
+  const search = searchParams.get("q") || "";
+  const sort = searchParams.get("sort") || "name-asc";
+
+  const update = (key, value) =>
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        if (value) next.set(key, value);
+        else next.delete(key);
+        return next;
+      },
+      { replace: true }
+    );
   const [places, setPlaces] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -69,14 +81,14 @@ export default function Explore() {
           type="text"
           placeholder="Search places..."
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => update("q".target.value)}
         />
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <select value={category} onChange={(e) => update("category", e.target.value)}>
           {CATEGORIES.map((c) => (
             <option key={c.value} value={c.value}>{c.label}</option>
           ))}
         </select>
-        <select value={sort} onChange={(e) => setSort(e.target.value)}>
+        <select value={sort} onChange={(e) => update("sort", e.target.value)}>
           <option value="name-asc">Name A-Z</option>
           <option value="name-desc">Name Z-A</option>
           <option value="distance">Nearest first</option>

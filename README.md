@@ -42,13 +42,13 @@ Place data is © Geoapify and © OpenStreetMap contributors. Photos are from Wik
 3. Create a `.env` file in the project root (see `.env.example`):
 ```
    VITE_GEOAPIFY_KEY=your_geoapify_api_key
-```
    Get a free key at https://myprojects.geoapify.com.
 ```
 4. Start the app:
-   npm run dev
 ```
+   npm run dev
    Open http://localhost:5173.
+```
 
 To make a production build, run `npm run build`.
 

@@ -2,9 +2,9 @@
 
 TripWise is a travel planner for exploring places in Hyderabad. Users can browse real places from an API, search, filter and sort them, open a details page, and build a personal itinerary that stays saved after a page refresh.
 
-**Live demo:** https://trip-wise-lac.vercel.app/
-**Track:** Frontend
-**Author:** SHRI RAM JAJU (26BCE1534)
+- **Live demo:** https://trip-wise-lac.vercel.app/
+- **Track:** Frontend
+- **Author:** SHRI RAM JAJU (26BCE1534)
 
 ## Features
 - **Explore:** places loaded from the Geoapify Places API, shown as cards with a photo
@@ -44,8 +44,8 @@ Place data is © Geoapify and © OpenStreetMap contributors. Photos are from Wik
    VITE_GEOAPIFY_KEY=your_geoapify_api_key
 ```
    Get a free key at https://myprojects.geoapify.com.
-4. Start the app:
 ```
+4. Start the app:
    npm run dev
 ```
    Open http://localhost:5173.

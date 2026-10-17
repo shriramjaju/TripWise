@@ -10,6 +10,11 @@ const CATEGORIES = [
   { label: "Parks", value: "leisure.park" },
   { label: "Temples & worship", value: "religion.place_of_worship" },
   { label: "Zoos", value: "entertainment.zoo" },
+  { label: "Historic sites", value: "tourism.sights" },
+  { label: "Restaurants", value: "catering.restaurant" },
+  { label: "Cafes", value: "catering.cafe" },
+  { label: "Shopping malls", value: "commercial.shopping_mall" },
+  { label: "Lakes & nature", value: "natural.water" },
 ];
 
 export default function Explore() {

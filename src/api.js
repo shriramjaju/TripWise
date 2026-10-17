@@ -5,7 +5,7 @@ export async function fetchPlaces({
   lon = 78.4867,
   lat = 17.385,
   radius = 25000,
-  limit = 30,
+  limit = 60,
 } = {}) {
   const url = `https://api.geoapify.com/v2/places?categories=${category}&filter=circle:${lon},${lat},${radius}&bias=proximity:${lon},${lat}&limit=${limit}&apiKey=${KEY}`;
   const res = await fetch(url);

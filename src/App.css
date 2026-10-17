@@ -105,3 +105,19 @@ header p { margin: 4px 0 0; color: #6b7280; }
   background: #f3f4f6; border-radius: 8px;
 }
 .gallery .message { grid-column: 1 / -1; padding: 12px; }
+
+body { transition: background 0.4s; background-attachment: fixed; }
+
+.nav { background: rgba(255, 255, 255, 0.75); backdrop-filter: blur(6px); padding: 12px 16px; border-radius: 12px; }
+
+body[data-theme="attractions"] { background: linear-gradient(180deg, #ccfbf1, #f5f7fa 70%); }
+body[data-theme="museums"]     { background: linear-gradient(180deg, #ede9fe, #f5f7fa 70%); }
+body[data-theme="beaches"]     { background: linear-gradient(180deg, #cffafe, #fef3c7 70%); }
+body[data-theme="parks"]       { background: linear-gradient(180deg, #dcfce7, #f5f7fa 70%); }
+body[data-theme="temples"]     { background: linear-gradient(180deg, #ffedd5, #f5f7fa 70%); }
+body[data-theme="zoos"]        { background: linear-gradient(180deg, #fef9c3, #f5f7fa 70%); }
+body[data-theme="historic"]    { background: linear-gradient(180deg, #f5e6d3, #f5f7fa 70%); }
+body[data-theme="food"]        { background: linear-gradient(180deg, #fee2e2, #f5f7fa 70%); }
+body[data-theme="cafes"]       { background: linear-gradient(180deg, #efe3d3, #f5f7fa 70%); }
+body[data-theme="shopping"]    { background: linear-gradient(180deg, #fae8ff, #f5f7fa 70%); }
+body[data-theme="lakes"]       { background: linear-gradient(180deg, #dbeafe, #f5f7fa 70%); }

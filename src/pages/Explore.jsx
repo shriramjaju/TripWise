@@ -81,7 +81,7 @@ export default function Explore() {
           type="text"
           placeholder="Search places..."
           value={search}
-          onChange={(e) => update("q".target.value)}
+          onChange={(e) => update("q", e.target.value)}
         />
         <select value={category} onChange={(e) => update("category", e.target.value)}>
           {CATEGORIES.map((c) => (

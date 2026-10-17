@@ -53,3 +53,41 @@ header p { margin: 4px 0 0; color: #6b7280; }
 .tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 12px 0; }
 .tag { background: #ccfbf1; color: #0f766e; padding: 4px 10px; border-radius: 999px; font-size: 13px; }
 .info p { margin: 6px 0; }
+
+.nav { position: sticky; top: 0; background: #f5f7fa; z-index: 10; }
+
+.card { display: flex; flex-direction: column; transition: transform 0.15s, box-shadow 0.15s; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); }
+.card .card-actions { margin-top: auto; padding-top: 12px; }
+.address { overflow-wrap: anywhere; }
+
+.footer { text-align: center; color: #6b7280; font-size: 12px; margin: 32px 0 8px; }
+
+@media (max-width: 480px) {
+  .app { padding: 12px; }
+  .controls input, .controls select { width: 100%; flex: none; }
+  .card-actions .btn { flex: 1; text-align: center; }
+  .details { padding: 16px; }
+  .details h1 { font-size: 22px; }
+  .logo { font-size: 18px; }
+}
+
+* { box-sizing: border-box; }
+
+.nav { position: sticky; top: 0; background: #f5f7fa; z-index: 10; }
+
+.card { display: flex; flex-direction: column; transition: transform 0.15s, box-shadow 0.15s; }
+.card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); }
+.card .card-actions { margin-top: auto; padding-top: 12px; }
+.address { overflow-wrap: anywhere; }
+
+.footer { text-align: center; color: #6b7280; font-size: 12px; margin: 32px 0 8px; }
+
+@media (max-width: 480px) {
+  .app { padding: 12px; }
+  .controls input, .controls select { width: 100%; flex: none; }
+  .card-actions .btn { flex: 1; text-align: center; }
+  .details { padding: 16px; }
+  .details h1 { font-size: 22px; }
+  .logo { font-size: 18px; }
+}

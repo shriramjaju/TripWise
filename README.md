@@ -1,16 +1,35 @@
-# React + Vite
+# TripWise
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A travel planner where users explore real places in Hyderabad, view details, and build a personal itinerary that is saved in the browser.
 
-Currently, two official plugins are available:
+**Live demo:** YOUR_VERCEL_LINK
+**Track:** Frontend
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
+- Explore places from the Geoapify Places API
+- Search by name, filter by category, sort by name or distance
+- Destination details page with live weather (Open-Meteo) and a map link
+- Add and remove places in "My Trip", saved with localStorage so it persists after refresh
+- Loading, error (with Retry) and empty states
+- Responsive layout for mobile and desktop
 
-## React Compiler
+## Tech stack
+React, Vite, React Router, plain CSS, fetch, localStorage. Deployed on Vercel.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## APIs used
+- **Geoapify Places API:** place data (https://www.geoapify.com). Data © OpenStreetMap contributors.
+- **Open-Meteo:** current weather, no key needed (https://open-meteo.com).
 
-## Expanding the Oxlint configuration
+## Setup
+1. Clone the repo and run `npm install`.
+2. Create a `.env` file in the project root (see `.env.example`):
+   `VITE_GEOAPIFY_KEY=your_geoapify_key`
+3. Run `npm run dev` and open http://localhost:5173.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Project structure
+- `src/api.js`: API calls
+- `src/TripContext.jsx`: itinerary state and localStorage
+- `src/pages/`: Explore, Details, MyTrip
+
+## Notes
+The API key is read from an environment variable and is not committed to the repo.

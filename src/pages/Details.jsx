@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { fetchPlaceById, fetchWeather } from "../api";
+import { fetchPlaceById, fetchWeather, fetchPhotos } from "../api";
 import { useTrip } from "../TripContext";
 
 export default function Details() {
@@ -12,6 +12,7 @@ export default function Details() {
   const [loading, setLoading] = useState(!state?.place);
   const [error, setError] = useState("");
   const [weather, setWeather] = useState(null);
+  const [photos, setPhotos] = useState(null);
 
   // If the page was opened/refreshed directly, fetch the place by its id
   useEffect(() => {
@@ -29,6 +30,12 @@ export default function Details() {
       .then(setWeather)
       .catch(() => setWeather(null));
   }, [place?.lat, place?.lon]);
+
+  // Photos for the place
+  useEffect(() => {
+  if (!place?.name) return;
+  fetchPhotos(place.name).then(setPhotos);
+}, [place?.name]);
 
   if (loading) return <p className="message">Loading details...</p>;
   if (error)
@@ -48,7 +55,13 @@ export default function Details() {
       <Link to="/" className="back">← Back to Explore</Link>
       <h1>{place.name}</h1>
       <p className="address">{place.formatted}</p>
-
+      <div className="gallery">
+  {photos === null && <p className="message">Loading photos...</p>}
+  {photos?.length === 0 && <p className="message">No photos found for this place.</p>}
+  {photos?.map((src) => (
+    <img key={src} src={src} alt={place.name} loading="lazy" />
+  ))}
+</div>
       <div className="tags">
         {(place.categories || []).slice(0, 4).map((c) => (
           <span className="tag" key={c}>{c.replace(/\./g, " › ").replace(/_/g, " ")}</span>

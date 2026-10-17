@@ -1,3 +1,5 @@
+
+import PlaceImage from "../PlaceImage";
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchPlaces } from "../api";
@@ -91,6 +93,7 @@ export default function Explore() {
           const added = isInTrip(p.place_id);
           return (
             <div className="card" key={p.place_id}>
+              <PlaceImage name={p.name} />
               <h3>{p.name}</h3>
               <p className="address">{p.formatted}</p>
               {p.distance != null && (

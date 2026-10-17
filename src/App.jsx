@@ -27,7 +27,7 @@ export default function App() {
         <Route path="*" element={<p className="message">Page not found.</p>} />
       </Routes>
             <footer className="footer">
-        Places data © Geoapify, © OpenStreetMap contributors · Weather by Open-Meteo
+        Places data © Geoapify, © OpenStreetMap contributors · Weather by Open-Meteo · Photos from Wikimedia Commons
       </footer>
     </div>
   );

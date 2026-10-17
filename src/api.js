@@ -33,3 +33,30 @@ export async function fetchWeather(lat, lon) {
   const data = await res.json();
   return data.current;
 }
+
+const photoCache = new Map();
+
+export function fetchPhotos(name) {
+  if (photoCache.has(name)) return photoCache.get(name);
+
+  const q = encodeURIComponent(`${name} Hyderabad`);
+  const url =
+    `https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*` +
+    `&generator=search&gsrnamespace=6&gsrlimit=12&gsrsearch=${q}` +
+    `&prop=imageinfo&iiprop=url|mime&iiurlwidth=600`;
+
+  const promise = fetch(url)
+    .then((r) => r.json())
+    .then((data) =>
+      Object.values(data.query?.pages ?? {})
+        .sort((a, b) => a.index - b.index)
+        .map((p) => p.imageinfo?.[0])
+        .filter((i) => i && i.mime === "image/jpeg" && i.thumburl)
+        .slice(0, 3)
+        .map((i) => i.thumburl)
+    )
+    .catch(() => []);
+
+  photoCache.set(name, promise);
+  return promise;
+}

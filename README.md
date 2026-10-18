@@ -70,3 +70,4 @@ vercel.json         makes page refreshes work on Vercel
 - The API key is read from an environment variable and is never committed to the repository.
 - Some small places have no photos on Wikimedia Commons; the app shows a placeholder for those.
 - The itinerary is stored in the browser only, so it is per device and per browser.
+- No database is used. The itinerary is saved in the browser's localStorage, as allowed for the Frontend track.
